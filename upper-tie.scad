@@ -1,3 +1,5 @@
+use<arm-mount.scad>;
+
 $fn=24;
 
 width=150;
@@ -29,3 +31,5 @@ intersection(){
     *translate([45,-50,0])cube(100);
 }
 %for(x=[-1:2:1])scale([x,-1])translate([extrusion_bolt_dist/2,0,-extrusion_width/2])cube([extrusion_width,height,extrusion_width],center=true);
+
+for(x=[-1:2:1])scale([x,1])translate([0,-37.5,1])arm_mount();
