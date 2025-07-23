@@ -4,7 +4,7 @@ $fn=24;
 
 tie_height=80;
 thickness=3;
-lie_flat=false;
+lie_flat=true;
 
 tie_bolt_inner_from_center = 20;
 tie_bolt_dia=6.05;
@@ -84,9 +84,9 @@ module arm_mount(extra_radius=0){
 	
 }
 arm_mount();
-arm_mount(extra_radius=8.5);
-*translate([280,290])rotate(180)
-arm_mount();
+!arm_mount(extra_radius=8.5);
+// *translate([280,290])rotate(180)
+// arm_mount();
 
 
-%translate([0,37.5,-5.25])linear_extrude(5)upper_tie();
+translate([0,37.5,-5])linear_extrude(5)upper_tie();

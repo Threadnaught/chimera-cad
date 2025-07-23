@@ -1,6 +1,6 @@
 $fn=24;
 
-width=150;
+width=150+80;
 height=80;
 rounding=5;
 
@@ -24,13 +24,16 @@ module upper_tie(){
                     circle(d=extrusion_bolt_dia);
             
             for(y=[-1:2:1])for(x=[-1:2:1])scale([x,y])
-                translate([external_bolt_dist/2,external_bolt_space/2])
+                translate([external_bolt_dist/2,external_bolt_space/2])union(){
                     circle(d=external_bolt_dia);
+                    translate([40,0])circle(d=external_bolt_dia);
+                }
+                    
         }
         *translate([45,-50,0])cube(100);
     }
 
 }
 upper_tie();
-%for(x=[-1:2:1])scale([x,-1])translate([extrusion_bolt_dist/2,0,-extrusion_width/2])cube([extrusion_width,height,extrusion_width],center=true);
+%for(x=[-1:2:1])scale([x,-1])translate([extrusion_bolt_dist/2-40,0,-extrusion_width/2])cube([extrusion_width,height,extrusion_width],center=true);
 
