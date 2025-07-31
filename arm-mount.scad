@@ -24,6 +24,16 @@ z1_mounting_margin=20;
 rounding=5;
 
 
+strut_initial_lateral_angle=17.5;
+
+strut_first_lateral_angle=0;
+strut_first_bend_angle=21.2;
+
+strut_mid_len=176;
+
+strut_second_lateral_angle=72;
+strut_second_bend_angle=84;
+
 module stepped_bend(total_angle=90,width=100,neutral_radius=20,steps=4){
 	if(lie_flat){
 		//If we're flat, approximated staged bends to a circle and calculate width
@@ -91,20 +101,39 @@ module arm_mount(extra_radius=0){
 	}
 	
 }
-translate([125,0,-8.5])translate([(inter_z1_spacing-z1_bolt_space)/2-z1_mounting_margin,plate_size_y])stepped_bend(total_angle=90,neutral_radius=20+8.5, steps=4){
-	flat_section()difference(){
-		union(){
-			offset(rounding)offset(-rounding)square([100,z1_bolt_space+(z1_mounting_margin*2)]);
-			square([100,50]);
-		}
-		for(x=[0:z1_bolt_space:z1_bolt_space]) for(y=[0:z1_bolt_space:z1_bolt_space])translate([x+z1_mounting_margin,y+z1_mounting_margin])circle(d=z1_bolt_dia);
-	}
-}
 
-*arm_mount();
+%arm_mount();
 arm_mount(extra_radius=8.5);
 // *translate([280,290])rotate(180)
 // arm_mount();
 
 
 translate([0,37.5,-5])linear_extrude(5)upper_tie();
+
+
+module support_strut(){
+	rotate(strut_initial_lateral_angle){
+		flat_section()difference(){
+			union(){
+				circle(d=20);
+				translate([5,0])square([10,20],center=true);
+			}
+			circle(d=tie_bolt_dia);
+		}
+		translate([0,10])rotate(-90)translate([0,10])rotate(strut_first_lateral_angle)stepped_bend(total_angle=strut_first_bend_angle,width=20,steps=2){
+			flat_section()
+			square([20,strut_mid_len]);
+			translate([0,strut_mid_len])rotate(strut_second_lateral_angle)stepped_bend(total_angle=strut_second_bend_angle,width=20,steps=4){
+				flat_section()difference(){
+					union(){
+						translate([10,5])square([20,10],center=true);
+						translate([10,10])circle(d=20);
+					}
+					translate([10,10])circle(d=z1_bolt_dia);
+				}
+			}
+		}
+	}
+
+}
+translate([60,10,3.25])support_strut();
