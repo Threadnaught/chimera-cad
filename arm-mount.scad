@@ -34,6 +34,8 @@ strut_mid_len=176;
 strut_second_lateral_angle=72;
 strut_second_bend_angle=84;
 
+strut_final_angle=20;
+
 module pie_slice(angle, r){
 	polygon([
 		[0,0],
@@ -134,12 +136,19 @@ module support_strut(){
 			translate([0,strut_mid_len]){
 				flat_section()rotate(strut_second_lateral_angle-90)pie_slice(strut_second_lateral_angle,20);
 				rotate(strut_second_lateral_angle)stepped_bend(total_angle=strut_second_bend_angle,width=20,steps=4){
-					flat_section()difference(){
-						union(){
-							translate([10,5])square([20,10],center=true);
-							translate([10,10])circle(d=20);
+					flat_section(){
+						
+						translate([20,0]){
+							rotate(90)pie_slice(strut_final_angle,20);
+							rotate(-strut_final_angle)translate([-20,0])difference(){
+								union(){
+									translate([10,5])square([20,10],center=true);
+									translate([10,10])circle(d=20);
+									
+								}
+								translate([10,10])circle(d=z1_bolt_dia);
+							}
 						}
-						translate([10,10])circle(d=z1_bolt_dia);
 					}
 				}
 			}
