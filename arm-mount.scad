@@ -34,6 +34,13 @@ strut_mid_len=176;
 strut_second_lateral_angle=72;
 strut_second_bend_angle=84;
 
+module pie_slice(angle, r){
+	polygon([
+		[0,0],
+		for (i=[0:$fn])[sin(angle*i/$fn)*r,cos(angle*i/$fn)*r]
+	]);
+}
+
 module stepped_bend(total_angle=90,width=100,neutral_radius=20,steps=4){
 	if(lie_flat){
 		//If we're flat, approximated staged bends to a circle and calculate width
@@ -123,13 +130,17 @@ module support_strut(){
 		translate([0,10])rotate(-90)translate([0,10])rotate(strut_first_lateral_angle)stepped_bend(total_angle=strut_first_bend_angle,width=20,steps=2){
 			flat_section()
 			square([20,strut_mid_len]);
-			translate([0,strut_mid_len])rotate(strut_second_lateral_angle)stepped_bend(total_angle=strut_second_bend_angle,width=20,steps=4){
-				flat_section()difference(){
-					union(){
-						translate([10,5])square([20,10],center=true);
-						translate([10,10])circle(d=20);
+			
+			translate([0,strut_mid_len]){
+				flat_section()rotate(strut_second_lateral_angle-90)pie_slice(strut_second_lateral_angle,20);
+				rotate(strut_second_lateral_angle)stepped_bend(total_angle=strut_second_bend_angle,width=20,steps=4){
+					flat_section()difference(){
+						union(){
+							translate([10,5])square([20,10],center=true);
+							translate([10,10])circle(d=20);
+						}
+						translate([10,10])circle(d=z1_bolt_dia);
 					}
-					translate([10,10])circle(d=z1_bolt_dia);
 				}
 			}
 		}
