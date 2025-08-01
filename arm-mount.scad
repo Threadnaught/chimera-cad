@@ -27,9 +27,9 @@ rounding=5;
 strut_initial_lateral_angle=17.5;
 
 strut_first_lateral_angle=0;
-strut_first_bend_angle=21.2;
+strut_first_bend_angle=20.3;
 
-strut_mid_len=176;
+strut_mid_len=172;
 
 strut_second_lateral_angle=72;
 strut_second_bend_angle=84;
@@ -111,16 +111,8 @@ module arm_mount(extra_radius=0){
 	
 }
 
-%arm_mount();
-arm_mount(extra_radius=8.5);
-// *translate([280,290])rotate(180)
-// arm_mount();
 
-
-translate([0,37.5,-5])linear_extrude(5)upper_tie();
-
-
-module support_strut(){
+module support_strut(mid_len=strut_mid_len,second_bend_radius=20){
 	rotate(strut_initial_lateral_angle){
 		flat_section()difference(){
 			union(){
@@ -131,11 +123,11 @@ module support_strut(){
 		}
 		translate([0,10])rotate(-90)translate([0,10])rotate(strut_first_lateral_angle)stepped_bend(total_angle=strut_first_bend_angle,width=20,steps=2){
 			flat_section()
-			square([20,strut_mid_len]);
+			square([20,mid_len]);
 			
-			translate([0,strut_mid_len]){
+			translate([0,mid_len]){
 				flat_section()rotate(strut_second_lateral_angle-90)pie_slice(strut_second_lateral_angle,20);
-				rotate(strut_second_lateral_angle)stepped_bend(total_angle=strut_second_bend_angle,width=20,steps=4){
+				rotate(strut_second_lateral_angle)stepped_bend(total_angle=strut_second_bend_angle,width=20,steps=4,neutral_radius=second_bend_radius){
 					flat_section(){
 						
 						translate([20,0]){
@@ -157,3 +149,12 @@ module support_strut(){
 
 }
 translate([60,10,3.25])support_strut();
+translate([60,10,6.75])support_strut(second_bend_radius=20-3.5,mid_len=strut_mid_len-1.3);
+
+%arm_mount();
+arm_mount(extra_radius=8.5);
+// *translate([280,290])rotate(180)
+// arm_mount();
+
+
+translate([0,37.5,-5])linear_extrude(5)upper_tie();
