@@ -5,9 +5,10 @@ rounding = 2.5;
 top_height = 25;
 mid_height = 10;
 
-height=200;
+bolt_hole_dia=6.5;
+
+extrusion_height=200;
 extrusion_width=30;
-extrusion_bolt_dia=6.5;
 extrusion_bolt_dist=200;
 
 // coords traced out of image
@@ -33,15 +34,15 @@ difference(){
 
 	for(x=[-1:2:1])for(y=[-1:2:1])scale([x,y])
 		translate([extrusion_bolt_dist/2-40,50]){
-			translate([0,0,-1])cylinder(d=extrusion_bolt_dia,h=30);
-			translate([0,0,10])cylinder(d=15,h=30);
+			translate([0,0,-1])cylinder(d=bolt_hole_dia,h=40);
+			translate([0,0,5])cylinder(d=15,h=40);
 		}
 
 	for(x=[-1:2:1])for(y=[-1:2:1])scale([x,y])
 		translate([25,25]){
-			translate([0,0,-1])cylinder(d=extrusion_bolt_dia,h=40);
+			translate([0,0,-1])cylinder(d=bolt_hole_dia,h=40);
 			translate([0,0,-1])cylinder(d=17.5,h=15);
 		}
 }
 
-%for(x=[-1:2:1])scale([x,-1])translate([extrusion_bolt_dist/2-40,0,-extrusion_width/2])cube([extrusion_width,height,extrusion_width],center=true);
+%for(x=[-1:2:1])scale([x,-1])translate([extrusion_bolt_dist/2-40,0,-extrusion_width/2])cube([extrusion_width,extrusion_height,extrusion_width],center=true);
