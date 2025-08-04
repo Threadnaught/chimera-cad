@@ -1,6 +1,6 @@
 $fn=24;
 
-// Utility functions:
+// Utility modules:
 // Create a 2D pie slice
 module pie_slice(angle, r){
 	polygon([
@@ -9,6 +9,7 @@ module pie_slice(angle, r){
 	]);
 }
 
+// Bent sheet metal modules:
 // Create a flat section
 module flat_section(){
 	if(lie_flat){
@@ -50,7 +51,6 @@ lie_flat=false;
 
 // Arm Mount / Support strut constants:
 tie_height=80; // TODO: join with upper-tie variable
-thickness=3; // TODO: make into a param, or move to individual files
 
 tie_bolt_inner_from_center = 20;
 tie_bolt_dia=6.05;
@@ -84,3 +84,32 @@ outer_second_bend_radius=20;
 inner_second_bend_radius=20-3.5;
 
 strut_final_angle=20;
+
+// Upper tie:
+
+upper_tie_width=150+80;
+upper_tie_height=80;
+
+upper_tie_extrusion_width=30; // TODO: unify
+
+upper_tie_extrusion_bolt_dia=6.05;
+upper_tie_extrusion_bolt_dist=upper_tie_width-upper_tie_extrusion_width;
+upper_tie_extrusion_bolt_space=upper_tie_height-25;
+
+upper_tie_external_bolt_dia=6.05;
+upper_tie_external_bolt_dist=40;
+upper_tie_external_bolt_space=upper_tie_height-25;
+
+// Lower tie:
+lower_tie_width=150;
+lower_tie_height=100;
+
+lower_tie_extrusion_width=30;
+
+lower_tie_extrusion_bolt_dia=6.05;
+lower_tie_extrusion_bolt_dist=lower_tie_width-lower_tie_extrusion_width;
+lower_tie_extrusion_bolt_space=lower_tie_height-25;
+
+lower_tie_external_bolt_dia=6.05;
+lower_tie_external_bolt_dist=70;
+lower_tie_external_bolt_space=lower_tie_height-25;

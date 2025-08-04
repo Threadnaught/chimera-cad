@@ -1,6 +1,8 @@
 use<upper-tie.scad>
 include<constants.scad>
 
+thickness=3;
+
 // TODO: this scad needs a bit of cleanup loooool
 module arm_mount(extra_radius=0){
 	translate([0,0,-extra_radius]){
