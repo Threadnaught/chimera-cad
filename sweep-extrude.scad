@@ -24,9 +24,19 @@ module sweep_extrude(start_target,end_target,steps,height){
 
 		target_pre = start_target + ((end_target - start_target) * progress_pre);
 		target_post = start_target + ((end_target - start_target) * progress_post);
+		
+		// Debug shapes:
+		*union(){
+			% rotate_towards(target_pre) translate([0,0,height * progress_pre]) cylinder(h=30,d=0.5);
+			% rotate_towards(target_post) translate([0,0,height * progress_post]) cylinder(h=30,d=0.5);
+
+			translate(target_pre) sphere(d=0.5);
+			translate(target_post) sphere(d=0.5);
+		}
+
 		hull(){
-			translate([0,0,height * progress_pre]) rotate_towards(target_pre) linear_extrude(0.01) children();
-			translate([0,0,height * progress_post]) rotate_towards(target_post) linear_extrude(0.01) children();
+			rotate_towards(target_pre) translate([0,0,height * progress_pre])  linear_extrude(0.01) children();
+			 rotate_towards(target_post) translate([0,0,height * progress_post]) linear_extrude(0.01) children();
 		}
 		// rotate_towards()
 	}
