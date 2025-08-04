@@ -45,4 +45,3 @@ difference(){
 		}
 }
 
-%for(x=[-1:2:1])scale([x,-1])translate([extrusion_bolt_dist/2-40,0,-extrusion_width/2])cube([extrusion_width,extrusion_height,extrusion_width],center=true);

@@ -1,3 +1,4 @@
+include<constants.scad>
 use<arm-mount.scad>
 use<upper-tie.scad>
 use<lower-tie.scad>
@@ -22,4 +23,6 @@ rotate([90,0,0]){
 		translate([0,37.5,-5])upper_tie();
 		translate([0,-250,-5])lower_tie();
 	//}
+
+	%for(x=[-1:2:1])scale([x,-1])translate([upper_tie_extrusion_bolt_dist/2-40,0,-extrusion_width/2])cube([extrusion_width,500,extrusion_width],center=true);
 }

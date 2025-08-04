@@ -52,7 +52,6 @@ m6_bolt_dia_fine=6.05;
 extrusion_width=30;
 
 // Arm Mount / Support strut constants:
-
 tie_bolt_inner_from_center = 20;
 tie_bolt_space_x=40;
 tie_bolt_space_y=55;
@@ -86,7 +85,6 @@ inner_second_bend_radius=20-3.5;
 strut_final_angle=20;
 
 // Upper tie:
-
 upper_tie_width=150+80;
 upper_tie_height=80;
 
