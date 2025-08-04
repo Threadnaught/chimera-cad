@@ -103,3 +103,10 @@ lower_tie_extrusion_bolt_space=lower_tie_height-25;
 
 lower_tie_external_bolt_dist=70;
 lower_tie_external_bolt_space=lower_tie_height-25;
+
+//Spine plate
+// TODO: measure this IRL
+plate_top_height = 25;
+plate_mid_height = 10;
+
+plate_extrusion_bolt_dist=200;
