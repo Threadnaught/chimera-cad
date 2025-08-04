@@ -6,15 +6,15 @@ module rotate_towards(pointing){
 	children();
 }
 
-// // Demo of rotate towards
-// for(x=[0:10]){
-// 	pointing = [0,x,15];
+// Demo of rotate towards
+*for(x=[0:10]){
+	pointing = [0,x,15];
 
-// 	translate(pointing) sphere(d=0.5);
+	translate(pointing) sphere(d=0.5);
 
-// 	translate([0,0,x])%rotate_towards(pointing-[0,0,x])
-// 	cylinder(d=1,h=15);
-// }
+	translate([0,0,x])%rotate_towards(pointing-[0,0,x])
+	cylinder(d=1,h=15);
+}
 
 module sweep_extrude(start_target,end_target,steps,height){
 	for(i=[0:steps-1]){
@@ -27,8 +27,8 @@ module sweep_extrude(start_target,end_target,steps,height){
 		
 		// Debug shapes:
 		*union(){
-			% rotate_towards(target_pre) translate([0,0,height * progress_pre]) cylinder(h=30,d=0.5);
-			% rotate_towards(target_post) translate([0,0,height * progress_post]) cylinder(h=30,d=0.5);
+			color([0.5,0.5,0.5,0.1]) %rotate_towards(target_pre) translate([0,0,height * progress_pre]) cylinder(h=30,d=0.5);
+			color([0.5,0.5,0.5,0.1]) %rotate_towards(target_post) translate([0,0,height * progress_post]) cylinder(h=30,d=0.5);
 
 			translate(target_pre) sphere(d=0.5);
 			translate(target_post) sphere(d=0.5);
@@ -36,10 +36,14 @@ module sweep_extrude(start_target,end_target,steps,height){
 
 		hull(){
 			rotate_towards(target_pre) translate([0,0,height * progress_pre])  linear_extrude(0.01) children();
-			 rotate_towards(target_post) translate([0,0,height * progress_post]) linear_extrude(0.01) children();
+			rotate_towards(target_post) translate([0,0,height * progress_post]) linear_extrude(0.01) children();
 		}
-		// rotate_towards()
 	}
 }
 
-sweep_extrude([0,0,20],[20,20,20],10,10)difference(){circle(5);};
+// Demo showing its intended use - creating an adapter in 3d space between angles
+difference(){
+	sweep_extrude([0,0,20],[0,10,40],$fn,20)difference(){square(5,center=true);};
+	linear_extrude(3)square(3,center=true);
+	rotate_towards([0,10,40])translate([0,0,17])linear_extrude(3.1)square(3,center=true);
+}
