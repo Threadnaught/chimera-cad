@@ -10,7 +10,6 @@ extrusion_bolt_dia=6.05;
 extrusion_bolt_dist=width-extrusion_width;
 extrusion_bolt_space=height-25;
 
-
 external_bolt_dia=6.05;
 external_bolt_dist=70;
 external_bolt_space=height-25;
