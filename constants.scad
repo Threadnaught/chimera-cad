@@ -48,12 +48,12 @@ module stepped_bend(total_angle=90,width=100,neutral_radius=20,steps=4){
 
 // General Constants:
 lie_flat=false;
+m6_bolt_dia_fine=6.05;
+extrusion_width=30;
 
 // Arm Mount / Support strut constants:
-tie_height=80; // TODO: join with upper-tie variable
 
 tie_bolt_inner_from_center = 20;
-tie_bolt_dia=6.05;
 tie_bolt_space_x=40;
 tie_bolt_space_y=55;
 
@@ -90,13 +90,9 @@ strut_final_angle=20;
 upper_tie_width=150+80;
 upper_tie_height=80;
 
-upper_tie_extrusion_width=30; // TODO: unify
-
-upper_tie_extrusion_bolt_dia=6.05;
-upper_tie_extrusion_bolt_dist=upper_tie_width-upper_tie_extrusion_width;
+upper_tie_extrusion_bolt_dist=upper_tie_width-extrusion_width;
 upper_tie_extrusion_bolt_space=upper_tie_height-25;
 
-upper_tie_external_bolt_dia=6.05;
 upper_tie_external_bolt_dist=40;
 upper_tie_external_bolt_space=upper_tie_height-25;
 
@@ -104,12 +100,8 @@ upper_tie_external_bolt_space=upper_tie_height-25;
 lower_tie_width=150;
 lower_tie_height=100;
 
-lower_tie_extrusion_width=30;
-
-lower_tie_extrusion_bolt_dia=6.05;
-lower_tie_extrusion_bolt_dist=lower_tie_width-lower_tie_extrusion_width;
+lower_tie_extrusion_bolt_dist=lower_tie_width-extrusion_width;
 lower_tie_extrusion_bolt_space=lower_tie_height-25;
 
-lower_tie_external_bolt_dia=6.05;
 lower_tie_external_bolt_dist=70;
 lower_tie_external_bolt_space=lower_tie_height-25;

@@ -18,7 +18,7 @@ module arm_mount(extra_radius=0){
 			}
 			
 			for(x=[0:tie_bolt_space_x:tie_bolt_space_x*2])for(y=[0:tie_bolt_space_y:tie_bolt_space_y])
-				translate([x+plate_margin,y+plate_margin])circle(d=tie_bolt_dia);
+				translate([x+plate_margin,y+plate_margin])circle(d=m6_bolt_dia_fine);
 
 			for(x=[0:z1_bolt_space:z1_bolt_space])
 			translate([x+(inter_z1_spacing-z1_bolt_space-z1_mounting_margin)/2,plate_size_y-z1_mounting_margin])
@@ -49,7 +49,7 @@ module support_strut(outer=true){
 				circle(d=20);
 				translate([5,0])square([10,20],center=true);
 			}
-			circle(d=tie_bolt_dia);
+			circle(d=m6_bolt_dia_fine);
 		}
 		translate([0,10])rotate(-90)translate([0,10])rotate(strut_first_lateral_angle)stepped_bend(total_angle=strut_first_bend_angle,width=20,steps=2){
 			flat_section()
