@@ -3,6 +3,9 @@ $fn=24;
 module rotate_towards(pointing){
 	rotate([0,0,atan2(pointing[1], pointing[0])])
 	rotate([0,atan2(norm([pointing[1], pointing[0]]), pointing[2]),0])
+	// This initial 'untwisting' is necassary to preserve initial rotation but
+	// it seems like it's causing small misalignment issues. Nothing massive,
+	// should be within the tolerances established.
 	rotate([0,0,-atan2(pointing[1], pointing[0])])
 	children();
 }
