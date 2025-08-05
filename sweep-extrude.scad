@@ -28,8 +28,8 @@ module sweep_extrude(start_target,end_target,steps,height){
 		
 		// Debug shapes:
 		*union(){
-			color([0.5,0.5,0.5,0.1]) %rotate_towards(target_pre) translate([0,0,height * progress_pre]) cylinder(h=500,d=0.5);
-			color([0.5,0.5,0.5,0.1]) %rotate_towards(target_post) translate([0,0,height * progress_post]) cylinder(h=500,d=0.5);
+			color([0.5,0.5,0.5,0.5]) %rotate_towards(target_pre) translate([0,0,height * progress_pre]) cylinder(h=500,d=0.5);
+			color([0.5,0.5,0.5,0.5]) %rotate_towards(target_post) translate([0,0,height * progress_post]) cylinder(h=500,d=0.5);
 
 			translate(target_pre) sphere(d=0.5);
 			translate(target_post) sphere(d=0.5);
