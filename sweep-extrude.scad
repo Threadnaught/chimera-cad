@@ -3,6 +3,7 @@ $fn=24;
 module rotate_towards(pointing){
 	rotate([0,0,atan2(pointing[1], pointing[0])])
 	rotate([0,atan2(norm([pointing[1], pointing[0]]), pointing[2]),0])
+	rotate([0,0,-atan2(pointing[1], pointing[0])])
 	children();
 }
 
@@ -27,8 +28,8 @@ module sweep_extrude(start_target,end_target,steps,height){
 		
 		// Debug shapes:
 		*union(){
-			color([0.5,0.5,0.5,0.1]) %rotate_towards(target_pre) translate([0,0,height * progress_pre]) cylinder(h=30,d=0.5);
-			color([0.5,0.5,0.5,0.1]) %rotate_towards(target_post) translate([0,0,height * progress_post]) cylinder(h=30,d=0.5);
+			color([0.5,0.5,0.5,0.1]) %rotate_towards(target_pre) translate([0,0,height * progress_pre]) cylinder(h=500,d=0.5);
+			color([0.5,0.5,0.5,0.1]) %rotate_towards(target_post) translate([0,0,height * progress_post]) cylinder(h=500,d=0.5);
 
 			translate(target_pre) sphere(d=0.5);
 			translate(target_post) sphere(d=0.5);
