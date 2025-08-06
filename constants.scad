@@ -49,6 +49,8 @@ module stepped_bend(total_angle=90,width=100,neutral_radius=20,steps=4){
 // General Constants:
 lie_flat=false;
 m6_bolt_dia_fine=6.05;
+m6_bolt_dia_coarse=6.5;
+m5_bolt_dia_coarse=5.5;
 extrusion_width=30;
 
 // Arm Mount / Support strut constants:
