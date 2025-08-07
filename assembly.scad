@@ -5,6 +5,7 @@ use<lower-tie.scad>
 use<spine-plate.scad>
 use<brace-adapter.scad>
 use<strut.scad>
+use<support-hook.scad>
 
 rotate([90,0,0]){
 	for(x=[-1:2:1])scale([x,1]){
@@ -26,6 +27,7 @@ rotate([90,0,0]){
 	}
 	translate([0,101.75,101.5-z1_bolt_space])rotate([90,0,0])strut();
 	translate([0,101.75,101.5])rotate([90,0,0])strut();
+	translate([0,65,3.5])support_hook();
 
 	// Upper and lower ties. Provide mounting points for hardware and tie the extrusions together.
 	translate([0,37.5,-5.25])upper_tie();
