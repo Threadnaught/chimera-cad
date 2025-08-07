@@ -112,3 +112,17 @@ plate_top_height = 25;
 plate_mid_height = 10;
 
 plate_extrusion_bolt_dist=200;
+
+// Brace constants:
+
+upper_position = [(inter_z1_spacing+z1_bolt_space)/2,101.5,93.5];
+lower_position = [(lower_tie_extrusion_bolt_dist+extrusion_width)/2,-(extrusion_width/2)-8.5,-300];
+
+angling_start_lower = lower_position+[15,0,30];
+angling_start_upper = upper_position-[0,0,20];
+
+brace_length = norm(angling_start_lower-angling_start_upper)-30;
+echo("Brace Length:", brace_length);
+
+upper_above_lower_position = [angling_start_lower[0],angling_start_lower[1],angling_start_upper[2]];
+lower_below_upper_position = [angling_start_upper[0],angling_start_upper[1],angling_start_lower[2]];

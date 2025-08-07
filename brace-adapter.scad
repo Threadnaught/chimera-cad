@@ -2,16 +2,6 @@ include<constants.scad>
 use<sweep-extrude.scad>
 
 
-upper_position = [(inter_z1_spacing+z1_bolt_space)/2,101.5,93.5];
-lower_position = [(lower_tie_extrusion_bolt_dist+extrusion_width)/2,-(extrusion_width/2)-8.5,-300];
-
-angling_start_lower = lower_position+[15,0,30];
-angling_start_upper = upper_position-[0,0,20];
-
-upper_above_lower_position = [angling_start_lower[0],angling_start_lower[1],angling_start_upper[2]];
-lower_below_upper_position = [angling_start_upper[0],angling_start_upper[1],angling_start_lower[2]];
-
-
 // Reference positions (dialed in by hand):
 module brace_adapter_refs(){
 	*union(){
@@ -88,7 +78,7 @@ module brace_adapter_bottom(){
 					rotate([0,135,180+90])cylinder(d=12,h=30);
 				}
 
-				*%translate([0,0,15])linear_extrude(380)square([20,20],center=true);
+				*%translate([0,0,15])linear_extrude(brace_length)square([20,20],center=true);
 			}
 
 			for(z=[-20:20:0])translate(lower_position+[0,0,z]){
@@ -96,5 +86,11 @@ module brace_adapter_bottom(){
 				translate([5,0,10])rotate([0,90,0])cylinder(d=15,h=25);
 			}
 		}
+	}
+}
+
+module brace(){
+	translate(angling_start_lower)rotate_towards(angling_start_upper-angling_start_lower){
+		translate([0,0,15])linear_extrude(brace_length)square([20,20],center=true);
 	}
 }

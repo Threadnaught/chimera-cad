@@ -19,6 +19,7 @@ rotate([90,0,0]){
 			brace_adapter_refs();
 			brace_adapter_top();
 			brace_adapter_bottom();
+			%brace();
 		}
 
 	}
