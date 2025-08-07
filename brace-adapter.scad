@@ -35,7 +35,10 @@ module brace_adapter_top(){
 				translate([0,0,2.5]){
 					cylinder(d=13,h=7.5);
 					sphere(d=14);
-					rotate([0,135,-90])cylinder(d=12,h=30);
+					rotate([0,135,-90]){
+						cylinder(d=12,h=30);
+						translate([5,0,0])cylinder(d=5,h=30);
+					}
 				}
 			}
 			translate(upper_position-[0,0,10]){
@@ -75,13 +78,17 @@ module brace_adapter_bottom(){
 				translate([0,0,2.5]){
 					cylinder(d=13,h=7.5);
 					sphere(d=14);
-					rotate([0,135,180+90])cylinder(d=12,h=30);
+					rotate([0,135,180+90]){
+						cylinder(d=12,h=30);
+						translate([5,0,0])cylinder(d=5,h=30);
+					}
+
 				}
 
 				*%translate([0,0,15])linear_extrude(brace_length)square([20,20],center=true);
 			}
 
-			for(z=[-20:20:0])translate(lower_position+[0,0,z]){
+			for(z=[-20:18:0])translate(lower_position+[0,0,z]){
 				translate([-1,0,10])rotate([0,90,0])cylinder(d=m6_bolt_dia_coarse,h=30);
 				translate([5,0,10])rotate([0,90,0])cylinder(d=15,h=25);
 			}
