@@ -14,6 +14,9 @@ module strut(){
 				translate([bolt_space,0])circle(d=outer_d);
 			}
 			translate([-bolt_space,0])circle(d=z1_bolt_dia);
+			translate([0,0])circle(d=z1_bolt_dia);
+			translate([20,0])circle(d=z1_bolt_dia);
+			translate([-20,0])circle(d=z1_bolt_dia);
 			translate([bolt_space,0])circle(d=z1_bolt_dia);
 		}
 	}
