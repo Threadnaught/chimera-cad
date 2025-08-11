@@ -106,7 +106,7 @@ module brace(){
 
 
 module brace_adapter_horizontal(){
-	!difference(){
+	difference(){
 		hull(){
 			translate(horizontal_position-[10,0,35])linear_extrude(35)square([40,25],center=true);
 			*translate(angling_start_upper)

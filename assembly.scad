@@ -18,7 +18,7 @@ rotate([90,0,0]){
 		*translate([60,10,6.75])support_strut(outer=false);
 
 		rotate([90,0,180]){
-			brace_adapter_refs();
+			*brace_adapter_refs();
 			brace_adapter_top();
 			brace_adapter_bottom();
 			brace_adapter_horizontal();
