@@ -21,6 +21,7 @@ rotate([90,0,0]){
 			brace_adapter_refs();
 			brace_adapter_top();
 			brace_adapter_bottom();
+			brace_adapter_horizontal();
 			%brace();
 		}
 
@@ -28,6 +29,7 @@ rotate([90,0,0]){
 	translate([0,101.75,101.5-z1_bolt_space])rotate([90,0,0])strut();
 	translate([0,101.75,101.5])rotate([90,0,0])strut();
 	translate([0,10,3.5])support_hook();
+	
 
 	// Upper and lower ties. Provide mounting points for hardware and tie the extrusions together.
 	translate([0,37.5,-5.25])upper_tie();

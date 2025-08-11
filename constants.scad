@@ -126,3 +126,5 @@ echo("Brace Length:", brace_length);
 
 upper_above_lower_position = [angling_start_lower[0],angling_start_lower[1],angling_start_upper[2]];
 lower_below_upper_position = [angling_start_upper[0],angling_start_upper[1],angling_start_lower[2]];
+
+horizontal_position = [(inter_z1_spacing-z1_bolt_space)/2,101.5,93.5];

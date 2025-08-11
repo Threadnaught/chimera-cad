@@ -24,9 +24,13 @@ module support_hook(){
 
 			translate([-x_bolt_space,centroid_height/2])circle(d=m6_bolt_dia_fine);
 			translate([x_bolt_space,centroid_height/2])circle(d=m6_bolt_dia_fine);
+
+
+			translate([-x_bolt_space,centroid_height-25])circle(d=m6_bolt_dia_fine);
+			translate([x_bolt_space,centroid_height-25])circle(d=m6_bolt_dia_fine);
 			
-			translate([-hook_hole_space,centroid_height])circle(d=10);
-			translate([hook_hole_space,centroid_height])circle(d=10);
+			translate([-hook_hole_space,centroid_height-5])circle(d=10);
+			translate([hook_hole_space,centroid_height-5])circle(d=10);
 			translate([0,centroid_height])circle(d=10);
 			
 		}
