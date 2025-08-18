@@ -6,6 +6,7 @@ use<spine-plate.scad>
 use<brace-adapter.scad>
 use<strut.scad>
 use<support-hook.scad>
+use<strap-terminator.scad>
 
 rotate([90,0,0]){
 	for(x=[-1:2:1])scale([x,1]){
@@ -24,6 +25,8 @@ rotate([90,0,0]){
 			brace_adapter_horizontal();
 			%brace();
 		}
+
+		translate([80,-50,-23.5])strap_terminator();
 
 	}
 	translate([0,101.75,101.5-z1_bolt_space])rotate([90,0,0])strut();
