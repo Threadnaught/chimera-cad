@@ -7,6 +7,7 @@ use<brace-adapter.scad>
 use<strut.scad>
 use<support-hook.scad>
 use<strap-terminator.scad>
+use<electronics-mount.scad>
 
 rotate([90,0,0]){
 	for(x=[-1:2:1])scale([x,1]){
@@ -37,6 +38,7 @@ rotate([90,0,0]){
 	// Upper and lower ties. Provide mounting points for hardware and tie the extrusions together.
 	translate([0,37.5,-5.25])upper_tie();
 	translate([0,-400,-8])lower_tie();
+	translate([0,-80,-8])electronics_mount();
 	
 	// Spine plate. Conforms to the back and allows the whole assembly to rest on the back comfortably-ish
 	// TODO: vertical positioning of this is a total guess in CAD

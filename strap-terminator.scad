@@ -4,7 +4,7 @@ $fn = 24;
 
 
 module strap_terminator(){
-	!difference(){
+	difference(){
 		union(){
 			cube([10,40,30],center=true);
 			for(s=[-1:2:1])scale([1,s,1])translate([10,16.25,10])cube([10,7.5,10],center=true);
