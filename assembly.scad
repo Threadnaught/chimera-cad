@@ -8,6 +8,7 @@ use<strut.scad>
 use<support-hook.scad>
 use<strap-terminator.scad>
 use<electronics-mount.scad>
+use<imu-band-hook.scad>
 
 rotate([90,0,0]){
 	for(x=[-1:2:1])scale([x,1]){
@@ -21,13 +22,15 @@ rotate([90,0,0]){
 
 		rotate([90,0,180]){
 			*brace_adapter_refs();
-			brace_adapter_top();
-			brace_adapter_bottom();
+			*brace_adapter_top();
+			*brace_adapter_bottom();
 			brace_adapter_horizontal();
-			%brace();
+			*%brace();
 		}
 
 		translate([80,-50,-23.5])strap_terminator();
+
+		%translate([(inter_z1_spacing+z1_bolt_space)/2,45,29])imu_band_hook();
 
 	}
 	translate([0,101.75,101.5-z1_bolt_space])rotate([90,0,0])strut();

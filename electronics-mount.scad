@@ -11,7 +11,7 @@ pi_hei = 58;
 imu_space = 20;
 
 module electronics_mount(){
-    !flat_section()intersection(){
+    flat_section()intersection(){
         difference(){
             // Main body:
             translate([-35,0])offset(rounding)offset(-rounding)square([lower_tie_width+70,lower_tie_height], center=true);
