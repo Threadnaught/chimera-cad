@@ -98,12 +98,15 @@ module brace_adapter_bottom(){
 	}
 }
 
-module brace(){
+module vertical_brace(){
 	translate(angling_start_lower)rotate_towards(angling_start_upper-angling_start_lower){
 		translate([0,0,15])linear_extrude(brace_length)square([20,20],center=true);
 	}
 }
 
+module horizontal_brace(){
+	translate([0,73.5,101.5])rotate([0,90,0])linear_extrude(brace_length,center=true)square([20,20],center=true);
+}
 
 module brace_adapter_horizontal(){
 	difference(){

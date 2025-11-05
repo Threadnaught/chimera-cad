@@ -13,8 +13,8 @@ use<imu-band-hook.scad>
 rotate([90,0,0]){
 	for(x=[-1:2:1])scale([x,1]){
 		// The mounts themselves, adapt the extrusion to arms
-		arm_mount();
-		arm_mount(extra_radius=8.5);
+		color("red")arm_mount();
+		color("blue")arm_mount(extra_radius=8.5);
 
 		// Support struts mounted to the underside of the arm mounts. Didn't demonstrate a great ability to improve rigidity.
 		*translate([60,10,3.25])support_strut(outer=true);
@@ -22,26 +22,29 @@ rotate([90,0,0]){
 
 		rotate([90,0,180]){
 			*brace_adapter_refs();
-			*brace_adapter_top();
-			*brace_adapter_bottom();
-			brace_adapter_horizontal();
-			*%brace();
+			color("green")brace_adapter_top();
+			color("green")brace_adapter_bottom();
+			color("purple")brace_adapter_horizontal();
+			%vertical_brace();
 		}
 
 		translate([80,-50,-23.5])strap_terminator();
 
-		%translate([(inter_z1_spacing+z1_bolt_space)/2,45,29])imu_band_hook();
+		translate([(inter_z1_spacing+z1_bolt_space)/2,45,29])imu_band_hook();
 
 	}
-	translate([0,101.75,101.5-z1_bolt_space])rotate([90,0,0])strut();
-	translate([0,101.75,101.5])rotate([90,0,0])strut();
-	translate([0,10,3.5])support_hook();
+	%horizontal_brace();
+
+	*translate([0,101.75,101.5-z1_bolt_space])rotate([90,0,0])strut();
+	*translate([0,101.75,101.5])rotate([90,0,0])strut();
+	*translate([0,10,3.5])support_hook();
 	
 
 	// Upper and lower ties. Provide mounting points for hardware and tie the extrusions together.
 	translate([0,37.5,-5.25])upper_tie();
 	translate([0,-400,-8])lower_tie();
-	translate([0,-80,-8])electronics_mount();
+	
+	*translate([0,-80,-8])electronics_mount();
 	
 	// Spine plate. Conforms to the back and allows the whole assembly to rest on the back comfortably-ish
 	// TODO: vertical positioning of this is a total guess in CAD
