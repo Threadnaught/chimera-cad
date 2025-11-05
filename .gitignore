@@ -2,5 +2,5 @@
 *.stl
 *.svg
 *.3mf
-*.png
+screenshots/*
 stepped-bend-animation
